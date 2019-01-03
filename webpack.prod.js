@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const Merge = require('webpack-merge');
 const CompressionPlugin = require('compression-webpack-plugin');
 
