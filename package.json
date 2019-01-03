@@ -1,0 +1,9 @@
+{
+  "name": "react-editable-data",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:luq10/react-editable-data.git",
+  "author": "Łukasz Sałajczyk <lukasz.salajczyk@jazzy.pro>",
+  "license": "MIT",
+  "private": false
+}
