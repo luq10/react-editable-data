@@ -20,11 +20,11 @@ const config = Merge(CommonConfig, {
     library: 'reactEditableData',
     libraryTarget: 'umd',
   },
-  externals: {
-    'react': 'react',
-    'prop-types': 'prop - types',
-    'immutability-helper': 'immutability-helper',
-  },
+  externals: [
+    'react',
+    'prop-types',
+    'immutability-helper',
+  ],
   plugins: [
     new CleanWebpackPlugin('dist'),
     new webpack.DefinePlugin({
