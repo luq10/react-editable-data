@@ -10,6 +10,9 @@ const config = Merge(CommonConfig, {
   optimization: {
     minimize: true,
   },
+  entry: {
+    index: './EditableData.jsx',
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

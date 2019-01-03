@@ -1,10 +1,15 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
+import CityDataTableContainer from './CityDataTableContainer';
 
 class App extends React.Component {
   render() {
     return (
-      <h1>Hello world</h1>
+      <div>
+        <h1>Examples</h1>
+
+        <CityDataTableContainer/>
+      </div>
     );
   }
 }

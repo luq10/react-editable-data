@@ -48,6 +48,7 @@
     "lint-staged": "^8.1.0",
     "node-sass": "^4.5.3",
     "react-hot-loader": "^4.6.3",
+    "react-json-pretty": "^2.0.0",
     "sass-loader": "^7.0.1",
     "sass-resources-loader": "^2.0.0",
     "style-loader": "^0.23.1",

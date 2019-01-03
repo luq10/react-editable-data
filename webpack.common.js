@@ -13,7 +13,6 @@ const config = {
   externals: 'appConfig',
   entry: {
     examples: './index.jsx',
-    index: './EditableData.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
