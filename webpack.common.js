@@ -12,11 +12,12 @@ const config = {
   // can be import from 'appConfig'
   externals: 'appConfig',
   entry: {
-    bundle: './index.jsx'
+    examples: './index.jsx',
+    index: './EditableData.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
+    filename: '[name].js',
     publicPath: './',
   },
   optimization: {
