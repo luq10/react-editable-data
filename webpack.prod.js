@@ -13,6 +13,12 @@ const config = Merge(CommonConfig, {
   entry: {
     index: './EditableData.jsx',
   },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    library: 'reactEditableData',
+    libraryTarget: 'umd',
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
