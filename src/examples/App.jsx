@@ -1,6 +1,6 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
-import CityDataTableContainer from './CityDataTableContainer';
+import CityDataTableContainer from './CityDataTable/CityDataTableContainer';
 
 class App extends React.Component {
   render() {

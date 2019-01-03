@@ -12,7 +12,7 @@ const config = Merge(CommonConfig, {
   //   minimize: true,
   // }, TODO
   entry: {
-    index: './EditableData.jsx',
+    index: './index.jsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -20,11 +20,11 @@ const config = Merge(CommonConfig, {
     library: 'reactEditableData',
     libraryTarget: 'umd',
   },
-  externals: [
-    'react',
-    'prop-types',
-    'immutability-helper',
-  ],
+  externals: {
+    'react': 'react',
+    'prop-types': 'prop - types',
+    'immutability-helper': 'immutability-helper',
+  },
   plugins: [
     new CleanWebpackPlugin('dist'),
     new webpack.DefinePlugin({

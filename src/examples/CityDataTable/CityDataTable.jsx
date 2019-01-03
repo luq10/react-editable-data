@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import JSONPretty from 'react-json-pretty';
 
-import {EditableDataList} from '../EditableData';
+import {EditableDataList} from '../../index';
 
 class CityDataTable extends React.Component {
   renderRow = ({
