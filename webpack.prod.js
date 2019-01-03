@@ -1,16 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
 const Merge = require('webpack-merge');
-const CompressionPlugin = require('compression-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const CommonConfig = require('./webpack.common.js');
 
 const config = Merge(CommonConfig, {
   devtool: 'source-map',
-  mode: 'production',
-  optimization: {
-    minimize: true,
-  },
+  mode: 'none',
+  // optimization: {
+  //   minimize: true,
+  // }, TODO
   entry: {
     index: './EditableData.jsx',
   },
@@ -20,19 +20,18 @@ const config = Merge(CommonConfig, {
     library: 'reactEditableData',
     libraryTarget: 'umd',
   },
+  externals: [
+    'react',
+    'prop-types',
+    'immutability-helper',
+  ],
   plugins: [
+    new CleanWebpackPlugin('dist'),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new CompressionPlugin({
-      filename: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
   ]
 });
 

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const CommonConfig = require('./webpack.common.js');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = merge(CommonConfig, {
   devtool: 'cheap-module-source-map',
@@ -15,10 +15,14 @@ const config = merge(CommonConfig, {
     port: 3000,
     hot: true
   },
-  output: merge(CommonConfig.output, {
-    // Cannot use [chunkhash] for chunk when use HMR
-    filename: '[name].[hash].js'
-  }),
+  entry: {
+    examples: './examples/index.jsx',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[hash].js',
+    publicPath: './',
+  },
   module: {
     rules: [
       {
@@ -29,6 +33,25 @@ const config = merge(CommonConfig, {
           emitWarning: true,
         },
       },
+      {
+        use: 'file-loader?name=[path][name].[ext]',
+        test: /\.(jpg|png|eot|svg|ttf|woff|woff2|otf|ico)$/
+      },
+      {
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+          // Share SASS variables, mixins and functions with all .sass files
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: path.resolve(__dirname, 'src/assets/styles/sass-resources.scss'),
+            },
+          },
+        ],
+        test: /\.scss$/
+      }
     ],
   },
   plugins: [
@@ -41,12 +64,9 @@ const config = merge(CommonConfig, {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
 
-    // Copy app.config to /dist folder.
-    //
-    // On production env, this thing will be made by CI
-    new CopyWebpackPlugin([
-      {from: '../app.config.js', to: './app.config.js'}
-    ])
+    new HtmlWebpackPlugin({
+      template: './examples/index.html',
+    })
   ]
 });
 
